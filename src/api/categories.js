@@ -1,4 +1,4 @@
-// Category IDs must align with the backend. IDs below are assumed values.
+﻿// Category IDs must align with the backend. IDs below are assumed values.
 export const INCOME_CATEGORIES = [
   { id: 1, name: '월급', icon: 'income_salary', type: 'INCOME' },
   { id: 2, name: '부수입', icon: 'income_side', type: 'INCOME' },
@@ -21,7 +21,8 @@ export const EXPENSE_CATEGORIES = [
 export const ALL_CATEGORIES = [...INCOME_CATEGORIES, ...EXPENSE_CATEGORIES];
 
 export function getCategoryById(id) {
-  return ALL_CATEGORIES.find((c) => c.id === id) ?? null;
+  const numericId = Number(id);
+  return ALL_CATEGORIES.find((c) => c.id === numericId) ?? null;
 }
 
 export function getCategoryIconByName(name, type) {

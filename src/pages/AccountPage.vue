@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, watch } from 'vue';
 import { useBudgetStore } from '../stores/useBudgetStore.js';
 import { usePigSystem } from '../composables/usePigSystem.js';
-import { getCategoryIconByName } from '../api/categories.js';
+import { getCategoryIconByName, getCategoryById } from '../api/categories.js';
 import AccountHeaderBar from '../components/AccountHeaderBar.vue';
 import AddLog from '../components/AddLog.vue';
 import PixelIcon from '../components/PixelIcon.vue';
@@ -63,8 +63,9 @@ const groupedRecords = computed(() => {
     .sort(([a], [b]) => b.localeCompare(a))
     .map(([date, records]) => ({
       date,
-      records: records.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+      records: records.sort((a, b) => (b.createdAt && a.createdAt) 
+        ? new Date(b.createdAt) - new Date(a.createdAt)
+        : (b.id - a.id)
       ),
       totalIncome: records
         .filter((r) => r.type === 'INCOME')
@@ -75,8 +76,15 @@ const groupedRecords = computed(() => {
     }));
 });
 
-function getCategoryIcon(categoryName, type) {
-  return getCategoryIconByName(categoryName, type);
+function getCategoryName(record) {
+  if (!record) return '';
+  return record.category?.name ?? getCategoryById(record.categoryId)?.name ?? '기타';
+}
+
+function getCategoryIcon(record) {
+  if (!record) return 'expense';
+  const name = getCategoryName(record);
+  return getCategoryIconByName(name, record.type);
 }
 </script>
 
@@ -129,12 +137,12 @@ function getCategoryIcon(categoryName, type) {
             <div class="record-left">
               <div class="record-icon" :class="record.type?.toLowerCase()">
                 <PixelIcon
-                  :icon="getCategoryIcon(record.category?.name ?? record.category, record.type)"
+                  :icon="getCategoryIcon(record)"
                   size="1.4rem"
                 />
               </div>
               <div class="record-info">
-                <p class="record-category">{{ record.category?.name ?? record.category }}</p>
+                <p class="record-category">{{ getCategoryName(record) }}</p>
                 <p class="record-content">
                   {{ record.description || '내용 없음' }}
                 </p>
@@ -189,7 +197,7 @@ function getCategoryIcon(categoryName, type) {
         <p class="confirm-icon"><PixelIcon icon="trash" size="1.4rem" /></p>
         <p class="confirm-title">삭제할까요?</p>
         <p class="confirm-desc">
-          <strong>{{ deleteTarget.category?.name ?? deleteTarget.category }}</strong> -
+          <strong>{{ getCategoryName(deleteTarget) }}</strong> -
           {{ formatCurrency(deleteTarget.amount) }}<br />
           삭제하면 되돌릴 수 없어요.
         </p>

@@ -1,0 +1,780 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "테스트유저",
+      "age": 25,
+      "currentPigLevel": 7,
+      "currentHouseLevel": 3,
+      "currentCharacterLevel": 4,
+      "monthlyIncome": 3000000,
+      "targetExpenseRatio": 50,
+      "monthlyBudget": 1500000,
+      "dailyBudget": 48387
+    }
+  ],
+  "records": [
+    {
+      "id": 1,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-01",
+      "type": "INCOME",
+      "category": {
+        "id": 1,
+        "name": "월급"
+      },
+      "categoryId": 1,
+      "amount": 3000000,
+      "description": "5월 월급"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-03",
+      "type": "EXPENSE",
+      "category": {
+        "id": 6,
+        "name": "식비"
+      },
+      "categoryId": 6,
+      "amount": 15000,
+      "description": "점심 김밥"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-03",
+      "type": "EXPENSE",
+      "category": {
+        "id": 7,
+        "name": "교통비"
+      },
+      "categoryId": 7,
+      "amount": 1500,
+      "description": "버스"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-05",
+      "type": "EXPENSE",
+      "category": {
+        "id": 6,
+        "name": "식비"
+      },
+      "categoryId": 6,
+      "amount": 32000,
+      "description": "저녁 삼겹살"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-07",
+      "type": "EXPENSE",
+      "category": {
+        "id": 8,
+        "name": "쇼핑"
+      },
+      "categoryId": 8,
+      "amount": 45000,
+      "description": "옷 구매"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-10",
+      "type": "EXPENSE",
+      "category": {
+        "id": 9,
+        "name": "문화생활"
+      },
+      "categoryId": 9,
+      "amount": 13000,
+      "description": "영화"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-12",
+      "type": "EXPENSE",
+      "category": {
+        "id": 6,
+        "name": "식비"
+      },
+      "categoryId": 6,
+      "amount": 8500,
+      "description": "편의점"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-15",
+      "type": "INCOME",
+      "category": {
+        "id": 2,
+        "name": "부수입"
+      },
+      "categoryId": 2,
+      "amount": 200000,
+      "description": "프리랜서 작업"
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-17",
+      "type": "EXPENSE",
+      "category": {
+        "id": 6,
+        "name": "식비"
+      },
+      "categoryId": 6,
+      "amount": 25000,
+      "description": "저녁 외식"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-20",
+      "type": "EXPENSE",
+      "category": {
+        "id": 12,
+        "name": "주거/통신"
+      },
+      "categoryId": 12,
+      "amount": 50000,
+      "description": "통신비"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-22",
+      "type": "EXPENSE",
+      "category": {
+        "id": 7,
+        "name": "교통비"
+      },
+      "categoryId": 7,
+      "amount": 3000,
+      "description": "지하철"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-24",
+      "type": "EXPENSE",
+      "category": {
+        "id": 6,
+        "name": "식비"
+      },
+      "categoryId": 6,
+      "amount": 18000,
+      "description": "카페 + 점심"
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-26",
+      "type": "EXPENSE",
+      "category": {
+        "id": 10,
+        "name": "의료/건강"
+      },
+      "categoryId": 10,
+      "amount": 12000,
+      "description": "약국"
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-28",
+      "type": "EXPENSE",
+      "category": {
+        "id": 6,
+        "name": "식비"
+      },
+      "categoryId": 6,
+      "amount": 22000,
+      "description": "마트 장보기"
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "yearMonth": "2026-05",
+      "date": "2026-05-29",
+      "type": "EXPENSE",
+      "category": {
+        "id": 7,
+        "name": "교통비"
+      },
+      "categoryId": 7,
+      "amount": 2500,
+      "description": "버스"
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "yearMonth": "2026-04",
+      "date": "2026-04-01",
+      "type": "INCOME",
+      "category": {
+        "id": 1,
+        "name": "월급"
+      },
+      "categoryId": 1,
+      "amount": 3000000,
+      "description": "4월 월급"
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "yearMonth": "2026-04",
+      "date": "2026-04-04",
+      "type": "EXPENSE",
+      "category": {
+        "id": 6,
+        "name": "식비"
+      },
+      "categoryId": 6,
+      "amount": 8500,
+      "description": "편의점"
+    },
+    {
+      "id": 18,
+      "userId": 1,
+      "yearMonth": "2026-04",
+      "date": "2026-04-05",
+      "type": "EXPENSE",
+      "category": {
+        "id": 9,
+        "name": "문화생활"
+      },
+      "categoryId": 9,
+      "amount": 13000,
+      "description": "영화"
+    },
+    {
+      "id": 19,
+      "userId": 1,
+      "yearMonth": "2026-04",
+      "date": "2026-04-06",
+      "type": "EXPENSE",
+      "category": {
+        "id": 6,
+        "name": "식비"
+      },
+      "categoryId": 6,
+      "amount": 32000,
+      "description": "저녁 삼겹살"
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "yearMonth": "2026-04",
+      "date": "2026-04-06",
+      "type": "EXPENSE",
+      "category": {
+        "id": 8,
+        "name": "쇼핑"
+      },
+      "categoryId": 8,
+      "amount": 45000,
+      "description": "옷 구매"
+    },
+    {
+      "type": "EXPENSE",
+      "date": "2026-05-29",
+      "categoryId": 6,
+      "amount": 1,
+      "description": "",
+      "id": 21
+    }
+  ],
+  "summaries": [
+    {
+      "id": 1,
+      "month": "2026-05",
+      "totalIncome": 3200000,
+      "totalExpense": 247500,
+      "netIncome": 2952500,
+      "savingRate": 92,
+      "transactionCount": 15,
+      "avgDailyExpense": 12375,
+      "incomeDetail": [
+        {
+          "category": {
+            "id": 1,
+            "name": "월급"
+          },
+          "amount": 3000000,
+          "ratio": 94
+        },
+        {
+          "category": {
+            "id": 2,
+            "name": "부수입"
+          },
+          "amount": 200000,
+          "ratio": 6
+        }
+      ],
+      "expenseDetail": [
+        {
+          "category": {
+            "id": 6,
+            "name": "식비"
+          },
+          "amount": 120500,
+          "ratio": 49
+        },
+        {
+          "category": {
+            "id": 7,
+            "name": "교통비"
+          },
+          "amount": 7000,
+          "ratio": 3
+        },
+        {
+          "category": {
+            "id": 8,
+            "name": "쇼핑"
+          },
+          "amount": 45000,
+          "ratio": 18
+        },
+        {
+          "category": {
+            "id": 9,
+            "name": "문화생활"
+          },
+          "amount": 13000,
+          "ratio": 5
+        },
+        {
+          "category": {
+            "id": 10,
+            "name": "의료/건강"
+          },
+          "amount": 12000,
+          "ratio": 5
+        },
+        {
+          "category": {
+            "id": 12,
+            "name": "주거/통신"
+          },
+          "amount": 50000,
+          "ratio": 20
+        }
+      ],
+      "monthlyBudget": 1500000,
+      "budgetUsedPercent": 16
+    },
+    {
+      "id": 2,
+      "month": "2026-04",
+      "totalIncome": 3000000,
+      "totalExpense": 850000,
+      "netIncome": 2150000,
+      "savingRate": 72,
+      "transactionCount": 20,
+      "avgDailyExpense": 28333,
+      "incomeDetail": [
+        {
+          "category": {
+            "id": 1,
+            "name": "월급"
+          },
+          "amount": 3000000,
+          "ratio": 100
+        }
+      ],
+      "expenseDetail": [
+        {
+          "category": {
+            "id": 6,
+            "name": "식비"
+          },
+          "amount": 350000,
+          "ratio": 41
+        },
+        {
+          "category": {
+            "id": 7,
+            "name": "교통비"
+          },
+          "amount": 80000,
+          "ratio": 9
+        },
+        {
+          "category": {
+            "id": 8,
+            "name": "쇼핑"
+          },
+          "amount": 200000,
+          "ratio": 24
+        },
+        {
+          "category": {
+            "id": 9,
+            "name": "문화생활"
+          },
+          "amount": 70000,
+          "ratio": 8
+        },
+        {
+          "category": {
+            "id": 12,
+            "name": "주거/통신"
+          },
+          "amount": 150000,
+          "ratio": 18
+        }
+      ],
+      "monthlyBudget": 1500000,
+      "budgetUsedPercent": 57
+    }
+  ],
+  "dailySummaries": [
+    {
+      "id": 1,
+      "month": "2026-05",
+      "date": "2026-05-29",
+      "income": 0,
+      "expense": 2500,
+      "pigLevel": 10
+    },
+    {
+      "id": 2,
+      "month": "2026-05",
+      "date": "2026-05-28",
+      "income": 0,
+      "expense": 22000,
+      "pigLevel": 9
+    },
+    {
+      "id": 3,
+      "month": "2026-05",
+      "date": "2026-05-26",
+      "income": 0,
+      "expense": 12000,
+      "pigLevel": 9
+    },
+    {
+      "id": 4,
+      "month": "2026-05",
+      "date": "2026-05-24",
+      "income": 0,
+      "expense": 18000,
+      "pigLevel": 9
+    },
+    {
+      "id": 5,
+      "month": "2026-05",
+      "date": "2026-05-22",
+      "income": 0,
+      "expense": 3000,
+      "pigLevel": 10
+    },
+    {
+      "id": 6,
+      "month": "2026-05",
+      "date": "2026-05-20",
+      "income": 0,
+      "expense": 50000,
+      "pigLevel": 7
+    },
+    {
+      "id": 7,
+      "month": "2026-05",
+      "date": "2026-05-17",
+      "income": 0,
+      "expense": 25000,
+      "pigLevel": 9
+    },
+    {
+      "id": 8,
+      "month": "2026-05",
+      "date": "2026-05-15",
+      "income": 200000,
+      "expense": 0,
+      "pigLevel": 10
+    },
+    {
+      "id": 9,
+      "month": "2026-05",
+      "date": "2026-05-12",
+      "income": 0,
+      "expense": 8500,
+      "pigLevel": 10
+    },
+    {
+      "id": 10,
+      "month": "2026-05",
+      "date": "2026-05-10",
+      "income": 0,
+      "expense": 13000,
+      "pigLevel": 9
+    },
+    {
+      "id": 11,
+      "month": "2026-05",
+      "date": "2026-05-07",
+      "income": 0,
+      "expense": 45000,
+      "pigLevel": 7
+    },
+    {
+      "id": 12,
+      "month": "2026-05",
+      "date": "2026-05-05",
+      "income": 0,
+      "expense": 32000,
+      "pigLevel": 8
+    },
+    {
+      "id": 13,
+      "month": "2026-05",
+      "date": "2026-05-03",
+      "income": 0,
+      "expense": 16500,
+      "pigLevel": 9
+    },
+    {
+      "id": 14,
+      "month": "2026-05",
+      "date": "2026-05-01",
+      "income": 3000000,
+      "expense": 0,
+      "pigLevel": 10
+    },
+    {
+      "id": 15,
+      "month": "2026-04",
+      "date": "2026-04-09",
+      "income": 0,
+      "expense": 1025000,
+      "pigLevel": 1
+    },
+    {
+      "id": 16,
+      "month": "2026-04",
+      "date": "2026-04-08",
+      "income": 0,
+      "expense": 1122666,
+      "pigLevel": 1
+    },
+    {
+      "id": 17,
+      "month": "2026-04",
+      "date": "2026-04-07",
+      "income": 0,
+      "expense": 16500,
+      "pigLevel": 7
+    },
+    {
+      "id": 18,
+      "month": "2026-04",
+      "date": "2026-04-06",
+      "income": 0,
+      "expense": 77000,
+      "pigLevel": 5
+    },
+    {
+      "id": 19,
+      "month": "2026-04",
+      "date": "2026-04-05",
+      "income": 0,
+      "expense": 13000,
+      "pigLevel": 8
+    },
+    {
+      "id": 20,
+      "month": "2026-04",
+      "date": "2026-04-04",
+      "income": 0,
+      "expense": 8500,
+      "pigLevel": 9
+    },
+    {
+      "id": 21,
+      "month": "2026-04",
+      "date": "2026-04-01",
+      "income": 3000000,
+      "expense": 0,
+      "pigLevel": 10
+    }
+  ],
+  "closings": [
+    {
+      "id": 1,
+      "month": "2026-05",
+      "monthIncome": 3200000,
+      "monthExpense": 247500,
+      "netIncome": 2952500,
+      "monthlyBudget": 1500000,
+      "avgExpenseRatio": 17,
+      "avgPigLevel": 9,
+      "currentHouseLevel": 3,
+      "nextHouseLevel": 4,
+      "categoryExpenses": [
+        {
+          "category": {
+            "id": 6,
+            "name": "식비"
+          },
+          "amount": 120500,
+          "ratio": 49
+        },
+        {
+          "category": {
+            "id": 8,
+            "name": "쇼핑"
+          },
+          "amount": 45000,
+          "ratio": 18
+        },
+        {
+          "category": {
+            "id": 12,
+            "name": "주거/통신"
+          },
+          "amount": 50000,
+          "ratio": 20
+        },
+        {
+          "category": {
+            "id": 9,
+            "name": "문화생활"
+          },
+          "amount": 13000,
+          "ratio": 5
+        },
+        {
+          "category": {
+            "id": 10,
+            "name": "의료/건강"
+          },
+          "amount": 12000,
+          "ratio": 5
+        },
+        {
+          "category": {
+            "id": 7,
+            "name": "교통비"
+          },
+          "amount": 7000,
+          "ratio": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "month": "2026-04",
+      "monthIncome": 3000000,
+      "monthExpense": 850000,
+      "netIncome": 2150000,
+      "monthlyBudget": 1500000,
+      "avgExpenseRatio": 57,
+      "avgPigLevel": 6,
+      "currentHouseLevel": 3,
+      "nextHouseLevel": 3,
+      "categoryExpenses": [
+        {
+          "category": {
+            "id": 6,
+            "name": "식비"
+          },
+          "amount": 350000,
+          "ratio": 41
+        },
+        {
+          "category": {
+            "id": 8,
+            "name": "쇼핑"
+          },
+          "amount": 200000,
+          "ratio": 24
+        },
+        {
+          "category": {
+            "id": 12,
+            "name": "주거/통신"
+          },
+          "amount": 150000,
+          "ratio": 18
+        },
+        {
+          "category": {
+            "id": 7,
+            "name": "교통비"
+          },
+          "amount": 80000,
+          "ratio": 9
+        },
+        {
+          "category": {
+            "id": 9,
+            "name": "문화생활"
+          },
+          "amount": 70000,
+          "ratio": 8
+        }
+      ]
+    }
+  ],
+  "farms": [
+    {
+      "id": 2,
+      "farmId": 2,
+      "farmName": "절약 챌린지",
+      "memberCount": 2,
+      "joined": false,
+      "createdAt": "2026-05-10",
+      "members": [
+        {
+          "userId": 4,
+          "name": "알뜰살뜰",
+          "currentPigLevel": 10,
+          "currentHouseLevel": 5
+        },
+        {
+          "userId": 5,
+          "name": "저축천재",
+          "currentPigLevel": 9,
+          "currentHouseLevel": 4
+        }
+      ]
+    },
+    {
+      "name": "11",
+      "id": 3,
+      "farmName": "이게머에영",
+      "memberCount": 1,
+      "joined": true,
+      "createdAt": "2026-05-11",
+      "members": [
+        {
+          "userId": 1,
+          "name": "테스트유저",
+          "currentPigLevel": 7,
+          "currentHouseLevel": 3
+        }
+      ]
+    }
+  ]
+}

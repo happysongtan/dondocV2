@@ -37,7 +37,7 @@ const dailyBudget = computed(() => {
 });
 
 const tooltip = ref(null); // 현재 호버된 day 데이터
-const tooltipPos = ref({}); // 툴팁 위치 (fixed 기준) 준
+const tooltipPos = ref({}); // 툴팁 위치 (fixed 기준)
 
 function showTooltip(event, day) {
   if (!day || (!day.pigState && day.income === 0 && day.expense === 0)) return;

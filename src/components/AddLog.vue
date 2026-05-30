@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import { ref, computed, watch } from 'vue';
 import { useBudgetStore } from '../stores/useBudgetStore.js';
 import { INCOME_CATEGORIES, EXPENSE_CATEGORIES, getCategoryIconByName } from '../api/categories.js';
@@ -26,7 +26,7 @@ watch(
       form.value = {
         type: rec.type,
         date: rec.date,
-        categoryId: rec.category?.id ?? null,
+        categoryId: rec.categoryId ?? rec.category?.id ?? null,
         amount: rec.amount,
         description: rec.description || '',
       };
@@ -64,6 +64,7 @@ async function handleSubmit() {
   const payload = {
     type: form.value.type,
     date: form.value.date,
+    yearMonth: form.value.date.slice(0, 7),
     categoryId: form.value.categoryId,
     amount: Number(form.value.amount),
     description: form.value.description,

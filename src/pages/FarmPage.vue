@@ -112,7 +112,7 @@ async function submitCreateModal() {
   try {
     const res = await apiCreateFarm(farmName);
     const created = res.data?.data ?? res.data;
-    const createdFarmId = created?.farmId;
+    const createdFarmId = created?.farmId ?? created?.id;
     if (!createdFarmId) throw new Error("생성된 농장 ID를 받지 못했어요.");
     showCreateModal.value = false;
     await fetchFarms();
@@ -194,14 +194,14 @@ onMounted(fetchFarms);
         <h2 class="farm-section-title">내 농장</h2>
         <button
           v-for="farm in farmsMine"
-          :key="`mine-${farm.farmId}`"
+          :key="`mine-${farm.id}`"
           class="farm-card"
           type="button"
-          @click="openFarm(farm.farmId)"
+          @click="openFarm(farm.id)"
         >
           <div class="farm-illust">
             <img
-              :src="getFarmCardImage(farm.farmId)"
+              :src="getFarmCardImage(farm.id)"
               alt=""
               class="farm-thumb"
             />
@@ -228,14 +228,14 @@ onMounted(fetchFarms);
         <h2 class="farm-section-title">모든 농장</h2>
         <button
           v-for="farm in farmsNotMine"
-          :key="`public-${farm.farmId}`"
+          :key="`public-${farm.id}`"
           class="farm-card"
           type="button"
-          @click="openFarm(farm.farmId)"
+          @click="openFarm(farm.id)"
         >
           <div class="farm-illust">
             <img
-              :src="getFarmCardImage(farm.farmId)"
+              :src="getFarmCardImage(farm.id)"
               alt=""
               class="farm-thumb"
             />

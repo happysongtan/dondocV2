@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useBudgetStore } from '../stores/useBudgetStore.js';
@@ -86,7 +86,7 @@ const dailyBudget = computed(() => authStore.currentUser?.dailyBudget ?? 0);
 // 오늘 진행률 — API 값으로 계산하는 표시용 연산
 const todayProgressPercent = computed(() => {
   if (!dailyBudget.value) return 0;
-  return Math.min(Math.round((store.todayExpense / dailyBudget.value) * 100), 100);
+  return Math.round((store.todayExpense / dailyBudget.value) * 100);
 });
 
 // 오늘 거래 목록 — 표시용 정렬만 수행
@@ -213,7 +213,7 @@ const todayRecordsSorted = computed(() =>
                 formatCurrency(store.todayExpense)
               }}</strong>
               <span class="progress-slash">/</span>
-              {{ formatCurrency(store.dailyBudget) }}
+              {{ formatCurrency(dailyBudget) }}
             </span>
           </div>
           <div class="progress-track">

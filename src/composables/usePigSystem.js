@@ -209,10 +209,29 @@ export function usePigSystem() {
     return `${character.name}\n\n${stageGuides[character.effect]}`;
   }
 
+  function getPigState(expense, dailyBudget) {
+    if (!dailyBudget || dailyBudget <= 0) return getPigStateByLevel(7);
+    const ratio = expense / dailyBudget;
+    let level = 1;
+    if (ratio <= 0.1) level = 10;
+    else if (ratio <= 0.3) level = 9;
+    else if (ratio <= 0.6) level = 8;
+    else if (ratio <= 1.0) level = 7;
+    else if (ratio <= 1.3) level = 6;
+    else if (ratio <= 1.6) level = 5;
+    else if (ratio <= 2.0) level = 4;
+    else if (ratio <= 3.0) level = 3;
+    else if (ratio <= 5.0) level = 2;
+    else level = 1;
+
+    return getPigStateByLevel(level);
+  }
+
   return {
     PIG_LEVELS,
     HOUSE_LEVELS,
     CHARACTER_STAGES,
+    getPigState,
     getPigStateByLevel,
     getHouseInfo,
     getCharacterByLevel,
