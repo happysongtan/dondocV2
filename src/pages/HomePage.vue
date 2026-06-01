@@ -16,7 +16,7 @@ const { getPigStateByLevel, getHouseInfo, formatCurrency, getCharacterByLevel, g
 
 onMounted(async () => {
   await Promise.all([
-    store.fetchTodayRecords(),
+    store.fetchRecords(store.currentMonth),
     store.fetchSummary(store.currentMonth),
   ]);
 });

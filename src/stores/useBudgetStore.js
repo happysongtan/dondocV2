@@ -2,7 +2,6 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import {
   getDetail,
-  getTodayRecords as apiGetTodayRecords,
   createRecord,
   updateRecord as apiUpdateRecord,
   deleteRecord as apiDeleteRecord,
@@ -11,34 +10,22 @@ import {
 
 export const useBudgetStore = defineStore('budget', () => {
   const records = ref([]);
-  const todayRecords = ref([]);
   const summary = ref(null);
   const currentMonth = ref(new Date().toISOString().slice(0, 7));
   const loading = ref(false);
   const error = ref(null);
+
+  const today = new Date().toISOString().slice(0, 10);
+
+  const todayRecords = computed(() =>
+    records.value.filter((r) => r.date === today),
+  );
 
   const todayExpense = computed(() =>
     todayRecords.value
       .filter((r) => r.type === 'EXPENSE')
       .reduce((sum, r) => sum + r.amount, 0),
   );
-
-  async function fetchTodayRecords() {
-    try {
-      const today = new Date().toISOString().slice(0, 10);
-      const res = await apiGetTodayRecords(today);
-      const detail = res.data?.data;
-      todayRecords.value = Array.isArray(detail?.records)
-        ? detail.records
-        : Array.isArray(detail)
-          ? detail
-          : Array.isArray(res.data)
-            ? res.data
-            : [];
-    } catch (e) {
-      console.error('오늘 거래 조회 실패', e);
-    }
-  }
 
   async function fetchRecords(yearMonth, type) {
     try {
@@ -112,7 +99,6 @@ export const useBudgetStore = defineStore('budget', () => {
 
   function resetStore() {
     records.value = [];
-    todayRecords.value = [];
     summary.value = null;
     error.value = null;
   }
@@ -125,7 +111,6 @@ export const useBudgetStore = defineStore('budget', () => {
     loading,
     error,
     todayExpense,
-    fetchTodayRecords,
     fetchRecords,
     fetchSummary,
     addRecord,

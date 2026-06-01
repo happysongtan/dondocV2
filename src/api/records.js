@@ -6,9 +6,6 @@ export function getDetail(yearMonth, type) {
   return http.get('/records/detail', { params });
 }
 
-export function getTodayRecords(date) {
-  return http.get('/records/detail', { params: { date } });
-}
 
 export function createRecord(payload) {
   return http.post('/records', payload);
