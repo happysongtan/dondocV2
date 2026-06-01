@@ -1,7 +1,8 @@
 ﻿<script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useBudgetStore } from '../stores/useBudgetStore.js';
-import { INCOME_CATEGORIES, EXPENSE_CATEGORIES, getCategoryIconByName } from '../api/categories.js';
+import { useCategoryStore } from '../stores/useCategoryStore.js';
+import { getCategoryIconByName } from '../api/categories.js';
 import PixelIcon from './PixelIcon.vue';
 
 const props = defineProps({
@@ -10,6 +11,9 @@ const props = defineProps({
 
 const emit = defineEmits(['saved', 'cancel']);
 const store = useBudgetStore();
+const categoryStore = useCategoryStore();
+
+onMounted(() => categoryStore.fetchCategories());
 
 const form = ref({
   type: 'EXPENSE',
@@ -38,7 +42,7 @@ watch(
 );
 
 const categories = computed(() =>
-  form.value.type === 'INCOME' ? INCOME_CATEGORIES : EXPENSE_CATEGORIES,
+  form.value.type === 'INCOME' ? categoryStore.incomeCategories : categoryStore.expenseCategories,
 );
 
 watch(
@@ -134,7 +138,7 @@ async function handleSubmit() {
               @click="form.categoryId = cat.id"
             >
               <PixelIcon
-                :icon="getCategoryIconByName(cat.name, form.type)"
+                :icon="getCategoryIconByName(cat.name)"
                 size="1.4rem"
               />
               <span>{{ cat.name }}</span>

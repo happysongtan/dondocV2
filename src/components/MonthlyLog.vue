@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, onMounted, watch } from 'vue'
 import { getClosing } from '../api/records.js'
-import { EXPENSE_CATEGORIES } from '../api/categories.js'
+import { getCategoryIconByName } from '../api/categories.js'
 import { usePigSystem } from '../composables/usePigSystem.js'
 import PixelIcon from './PixelIcon.vue'
 
@@ -46,8 +46,7 @@ const categoryExpenses = computed(() => {
   if (!Array.isArray(items)) return []
   return items.map((item) => {
     const name = item.category?.name ?? item.category ?? ''
-    const icon = EXPENSE_CATEGORIES.find((c) => c.name === name)?.icon ?? 'expense'
-    return { category: name, amount: item.amount, ratio: item.ratio, icon }
+    return { category: name, amount: item.amount, ratio: item.ratio, icon: getCategoryIconByName(name) }
   })
 })
 

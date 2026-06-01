@@ -1,3 +1,51 @@
+0. 카테고리 목록 조회
+   **엔드포인트**
+
+GET http://localhost:8080/api/categories
+
+**Headers**
+
+userId: 1
+
+### Response
+
+| key    | 설명          | value 타입 | 옵션           | Nullable | 예시       |
+| ------ | ------------- | ---------- | -------------- | -------- | ---------- |
+| id     | 카테고리 ID   | Long       | -              | X        | 6          |
+| name   | 카테고리 이름 | String     | -              | X        | "식비"     |
+| type   | 거래 유형     | String     | INCOME/EXPENSE | X        | "EXPENSE"  |
+
+**Response Example**
+
+```json
+{
+  "success": true,
+  "data": [
+    { "id": 1, "name": "월급", "type": "INCOME" },
+    { "id": 2, "name": "부수입", "type": "INCOME" },
+    { "id": 3, "name": "투자수익", "type": "INCOME" },
+    { "id": 4, "name": "용돈", "type": "INCOME" },
+    { "id": 5, "name": "기타수입", "type": "INCOME" },
+    { "id": 6, "name": "식비", "type": "EXPENSE" },
+    { "id": 7, "name": "교통비", "type": "EXPENSE" },
+    { "id": 8, "name": "쇼핑", "type": "EXPENSE" },
+    { "id": 9, "name": "문화생활", "type": "EXPENSE" },
+    { "id": 10, "name": "의료/건강", "type": "EXPENSE" },
+    { "id": 11, "name": "교육", "type": "EXPENSE" },
+    { "id": 12, "name": "주거/통신", "type": "EXPENSE" },
+    { "id": 13, "name": "기타지출", "type": "EXPENSE" }
+  ],
+  "message": "카테고리 조회 성공"
+}
+```
+
+### Status
+
+| status | response content |
+| ------ | ---------------- |
+| 200    | 조회 성공        |
+| 401    | 인증 토큰 없음   |
+
 1. 내 정보 조회
    **엔드포인트**
 

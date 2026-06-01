@@ -1,13 +1,15 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
 import { useBudgetStore } from '../stores/useBudgetStore.js';
+import { useCategoryStore } from '../stores/useCategoryStore.js';
 import { usePigSystem } from '../composables/usePigSystem.js';
-import { getCategoryIconByName, getCategoryById } from '../api/categories.js';
+import { getCategoryIconByName } from '../api/categories.js';
 import AccountHeaderBar from '../components/AccountHeaderBar.vue';
 import AddLog from '../components/AddLog.vue';
 import PixelIcon from '../components/PixelIcon.vue';
 
 const store = useBudgetStore();
+const categoryStore = useCategoryStore();
 const { formatCurrency, formatDate } = usePigSystem();
 
 const selectedMonth = ref(new Date().toISOString().slice(0, 7));
@@ -15,7 +17,10 @@ const filterType = ref('all');
 const showAddLog = ref(false);
 const editRecord = ref(null);
 
-onMounted(() => store.fetchRecords(selectedMonth.value));
+onMounted(() => {
+  store.fetchRecords(selectedMonth.value);
+  categoryStore.fetchCategories();
+});
 watch(selectedMonth, (month) => store.fetchRecords(month));
 
 // 확인 삭제 모달
@@ -78,13 +83,12 @@ const groupedRecords = computed(() => {
 
 function getCategoryName(record) {
   if (!record) return '';
-  return record.category?.name ?? getCategoryById(record.categoryId)?.name ?? '기타';
+  return record.category?.name ?? categoryStore.getCategoryById(record.categoryId)?.name ?? '기타';
 }
 
 function getCategoryIcon(record) {
   if (!record) return 'expense';
-  const name = getCategoryName(record);
-  return getCategoryIconByName(name, record.type);
+  return getCategoryIconByName(getCategoryName(record));
 }
 </script>
 

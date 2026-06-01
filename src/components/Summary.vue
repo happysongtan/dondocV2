@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
 import { getSummary } from '../api/records.js';
-import { INCOME_CATEGORIES, EXPENSE_CATEGORIES } from '../api/categories.js';
+import { getCategoryIconByName } from '../api/categories.js';
 import { usePigSystem } from '../composables/usePigSystem.js';
 import PixelIcon from './PixelIcon.vue';
 
@@ -42,17 +42,16 @@ const transactionCount = computed(() => summaryData.value?.transactionCount ?? 0
 const avgDailyExpense = computed(() => summaryData.value?.avgDailyExpense ?? 0);
 const monthRecords = computed(() => ({ length: transactionCount.value }));
 
-function addIcon(items, categories) {
+function addIcon(items) {
   if (!Array.isArray(items)) return [];
-  return items.map((item) => ({
-    ...item,
-    category: item.category?.name ?? item.category ?? '',
-    icon: categories.find((c) => c.name === (item.category?.name ?? item.category))?.icon ?? 'expense',
-  }));
+  return items.map((item) => {
+    const name = item.category?.name ?? item.category ?? '';
+    return { ...item, category: name, icon: getCategoryIconByName(name) };
+  });
 }
 
-const incomeByCat = computed(() => addIcon(summaryData.value?.incomeDetail, INCOME_CATEGORIES));
-const expenseByCat = computed(() => addIcon(summaryData.value?.expenseDetail, EXPENSE_CATEGORIES));
+const incomeByCat = computed(() => addIcon(summaryData.value?.incomeDetail));
+const expenseByCat = computed(() => addIcon(summaryData.value?.expenseDetail));
 
 // 차트 옵션 설정
 const chartOptions = {
