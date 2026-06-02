@@ -4,6 +4,7 @@ import { readFileSync } from 'fs';
 const routes = JSON.parse(readFileSync('./routes.json', 'utf-8'));
 
 const server = jsonServer.create();
+server.set('etag', false);
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 

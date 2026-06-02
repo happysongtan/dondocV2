@@ -3,7 +3,7 @@ import http from './http.js';
 export function getDetail(yearMonth, type) {
   const params = { yearMonth };
   if (type && type !== 'all') params.type = type.toUpperCase();
-  return http.get('/records/detail', { params });
+  return http.get('/records', { params });
 }
 
 

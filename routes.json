@@ -1,6 +1,5 @@
 {
   "/users/me": "/users/1",
-  "/records/detail(.*)": "/records$1",
   "/records/summary/daily(.*)": "/dailySummaries$1",
   "/records/summary(.*)": "/summaries$1",
   "/records/closing(.*)": "/closings$1"
