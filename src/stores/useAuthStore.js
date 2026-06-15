@@ -13,25 +13,25 @@ export const useAuthStore = defineStore(
       setUserId(currentUser.value?.id ?? null);
     });
 
-    const MOCK_USER = {
-      id: 1,
-      name: '테스트유저',
-      age: 25,
-      currentPigLevel: 7,
-      currentHouseLevel: 3,
-      currentCharacterLevel: 4,
-      monthlyIncome: 3000000,
-      targetExpenseRatio: 50,
-      monthlyBudget: 1500000,
-      dailyBudget: 48387,
-    };
-
     async function login(userId, password) {
-      currentUser.value = MOCK_USER;
+      try {
+        const res = await apiLogin(userId, password);
+        const loginData = res.data.data;
+        currentUser.value = loginData;
+        const meRes = await getMe();
+        currentUser.value = { ...loginData, ...meRes.data.data };
+      } catch (e) {
+        currentUser.value = null;
+        throw new Error(e.response?.data?.message || '로그인에 실패했어요');
+      }
     }
 
     async function signup(userId, password, name) {
-      currentUser.value = { ...MOCK_USER, name };
+      try {
+        await apiSignup(userId, password, name);
+      } catch (e) {
+        throw new Error(e.response?.data?.message || '회원가입에 실패했어요');
+      }
     }
 
     function logout() {
