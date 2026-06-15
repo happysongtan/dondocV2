@@ -36,7 +36,17 @@ const farmList = computed(() =>
 );
 const farmsMine = computed(() => farmList.value.filter((f) => f.joined));
 const farmsNotMine = computed(() => farmList.value.filter((f) => !f.joined));
-const farmMembers = computed(() => farmDetail.value?.members ?? []);
+const farmMembers = computed(() => {
+  const members = farmDetail.value?.members ?? [];
+  const myId = authStore.currentUser?.id;
+  if (!myId) return members;
+
+  return [...members].sort((a, b) => {
+    if (a.userId === myId) return -1;
+    if (b.userId === myId) return 1;
+    return 0;
+  });
+});
 const isMyFarm = computed(() => farmDetail.value?.joined ?? false);
 
 const FARM_THUMBS = [
