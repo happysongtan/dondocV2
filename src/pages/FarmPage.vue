@@ -31,13 +31,21 @@ const errorMessage = ref("");
 const showCreateModal = ref(false);
 const newFarmName = ref("");
 
-const farmList = computed(() => (Array.isArray(farms.value) ? farms.value : []));
+const farmList = computed(() =>
+  Array.isArray(farms.value) ? farms.value : [],
+);
 const farmsMine = computed(() => farmList.value.filter((f) => f.joined));
 const farmsNotMine = computed(() => farmList.value.filter((f) => !f.joined));
 const farmMembers = computed(() => farmDetail.value?.members ?? []);
 const isMyFarm = computed(() => farmDetail.value?.joined ?? false);
 
-const FARM_THUMBS = [farmThumb1, farmThumb2, farmThumb3, farmThumb4, farmThumb5];
+const FARM_THUMBS = [
+  farmThumb1,
+  farmThumb2,
+  farmThumb3,
+  farmThumb4,
+  farmThumb5,
+];
 
 function getFarmCardImage(farmId) {
   const numberPart = Number(String(farmId).replace(/\D/g, ""));
@@ -197,14 +205,10 @@ onMounted(fetchFarms);
           :key="`mine-${farm.id}`"
           class="farm-card"
           type="button"
-          @click="openFarm(farm.id)"
+          @click="openFarm(farm.farmId)"
         >
           <div class="farm-illust">
-            <img
-              :src="getFarmCardImage(farm.id)"
-              alt=""
-              class="farm-thumb"
-            />
+            <img :src="getFarmCardImage(farm.id)" alt="" class="farm-thumb" />
           </div>
           <div class="farm-card-main">
             <p class="farm-name">{{ farm.farmName }}</p>
@@ -231,14 +235,10 @@ onMounted(fetchFarms);
           :key="`public-${farm.id}`"
           class="farm-card"
           type="button"
-          @click="openFarm(farm.id)"
+          @click="openFarm(farm.farmId)"
         >
           <div class="farm-illust">
-            <img
-              :src="getFarmCardImage(farm.id)"
-              alt=""
-              class="farm-thumb"
-            />
+            <img :src="getFarmCardImage(farm.id)" alt="" class="farm-thumb" />
           </div>
           <div class="farm-card-main">
             <p class="farm-name">{{ farm.farmName }}</p>
@@ -252,7 +252,10 @@ onMounted(fetchFarms);
             <PixelIcon icon="arrow_right" size="0.8rem" />
           </span>
         </button>
-        <div v-if="farmsNotMine.length === 0 && farmsMine.length === 0" class="state-card">
+        <div
+          v-if="farmsNotMine.length === 0 && farmsMine.length === 0"
+          class="state-card"
+        >
           <PixelIcon icon="clipboard" size="1.4rem" />
           <p>등록된 농장이 없어요.</p>
         </div>
@@ -303,7 +306,10 @@ onMounted(fetchFarms);
           class="member-card"
         >
           <div class="member-visual">
-            <PigBackground :house-level="member.currentHouseLevel ?? 3" :scale="1.1" />
+            <PigBackground
+              :house-level="member.currentHouseLevel ?? 3"
+              :scale="1.1"
+            />
             <PigPixelArt
               :level="member.currentPigLevel ?? 5"
               class="member-pig"
@@ -322,7 +328,9 @@ onMounted(fetchFarms);
                   :icon="getHouseIconByLevel(member.currentHouseLevel)"
                   size="0.85rem"
                 />
-                <span>{{ getHouseInfo(member.currentHouseLevel ?? 3).name }}</span>
+                <span>{{
+                  getHouseInfo(member.currentHouseLevel ?? 3).name
+                }}</span>
               </span>
             </div>
           </div>
