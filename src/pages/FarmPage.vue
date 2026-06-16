@@ -17,9 +17,11 @@ import farmThumb2 from "../assets/farms/farm-thumb-2.svg";
 import farmThumb3 from "../assets/farms/farm-thumb-3.svg";
 import farmThumb4 from "../assets/farms/farm-thumb-4.svg";
 import farmThumb5 from "../assets/farms/farm-thumb-5.svg";
+import { useAuthStore } from "../stores/useAuthStore.js";
 
 const { getPigStateByLevel, getHouseInfo } = usePigSystem();
 
+const authStore = useAuthStore();
 const selectedFarmId = ref(null);
 const farms = ref([]);
 const farmDetail = ref(null);
