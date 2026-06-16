@@ -27,11 +27,33 @@ const characterStages = computed(() =>
 );
 const isFromLogin = computed(() => route.query.source === 'login');
 
+const PIG_RANGE_LABELS = {
+  10: '0~70%',
+  9: '70~80%',
+  8: '80~90%',
+  7: '90~100%',
+  6: '100~110%',
+  5: '110~120%',
+  4: '120~130%',
+  3: '130~140%',
+  2: '140~150%',
+  1: '150%+',
+};
+
+const CHARACTER_RANGE_LABELS = {
+  5: '0.7x 이하',
+  4: '0.7x~0.9x',
+  3: '0.9x~1.1x',
+  2: '1.1x~1.4x',
+  1: '1.4x 초과',
+};
+
 function getPigRangeLabel(index) {
   const current = pigLevels.value[index];
   const previous = pigLevels.value[index - 1];
 
   if (!current) return '';
+  return PIG_RANGE_LABELS[current.level] ?? '';
   if (current.maxRatio === Infinity) {
     return previous ? `${previous.maxRatio}%+` : '전체 구간';
   }
@@ -47,6 +69,7 @@ function getCharacterRangeLabel(index) {
   const previous = characterStages.value[index - 1];
 
   if (!current) return '';
+  return CHARACTER_RANGE_LABELS[current.stage] ?? '';
   if (current.maxPace === Infinity) {
     return previous ? `${previous.maxPace}x+` : '1.4x 초과';
   }

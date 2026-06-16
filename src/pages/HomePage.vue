@@ -13,6 +13,7 @@ const store = useBudgetStore();
 const authStore = useAuthStore();
 const router = useRouter();
 const { getPigStateByLevel, getHouseInfo, formatCurrency, getCharacterByLevel, getPigMessage, getCharacterGuideMessage } = usePigSystem();
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 onMounted(async () => {
   await Promise.all([
@@ -128,8 +129,8 @@ const todayRecordsSorted = computed(() =>
         <PixelIcon icon="alert" size="1rem" />
         <span>{{ store.error }}</span>
       </p>
-      <p class="error-hint">json-server가 실행 중인지 확인해주세요.</p>
-      <code>npm run server</code>
+      <p class="error-hint">서버가 실행 중인지 확인해주세요.</p>
+      <code>{{ apiBaseUrl }}</code>
     </div>
 
     <template v-else>
